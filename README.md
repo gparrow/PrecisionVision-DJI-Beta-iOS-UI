@@ -1,3 +1,8 @@
+#PrecisionVision specific copy
+This is a fork of the open sourced UI/UX (Beta) library, PrecisionVision needs to change certain capabilities such as units and ability to modify properties inside some of the DJIWidgets which could not be done in the official version.
+
+
+
 # DJI iOS UX SDK
 
 The DJI UX SDK speeds up development time by providing UI elements for all core functionalities, and by using it in conjunction with the [DJI Mobile SDK](https://developer.dji.com/mobile-sdk/) you can create a customized mobile app to unlock the full potential of your DJI aerial platform. Using the default UX SDK, an application can be created with no additional lines of code; you can also pick and choose which elements you want to use for maximum UI flexibility.
