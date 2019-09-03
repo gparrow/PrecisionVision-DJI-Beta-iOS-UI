@@ -45,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIFont *smallFont;
 @property (nonatomic, strong) UIFont *largeFont;
 
+- (void)updateUI;
+
 @end
 
 NS_ASSUME_NONNULL_END

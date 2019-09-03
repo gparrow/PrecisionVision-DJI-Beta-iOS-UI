@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIColor *lightFontColor;
 @property (nonatomic, strong) UIColor *darkFontColor;
+- (void)updateUI;
+
 
 @end
 

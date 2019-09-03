@@ -122,7 +122,7 @@ static const CGFloat kValueFontSize = 14.0;
 - (NSMutableAttributedString *)attributedLabelValue {
     NSString *kPrefix = @"V.S";
     NSString *valueString = [NSString stringWithFormat:@"%0.1f", fabs(self.widgetModel.verticalVelocity.doubleValue)];
-    NSString *kPostfix = self.widgetModel.verticalVelocityUnits.symbol;
+    NSString *kPostfix =  [NSString stringWithFormat:@"%@%@", self.widgetModel.verticalVelocityUnits.symbol, @"\\s"];
     NSString *basicString = [NSString stringWithFormat:@"%@ %@ %@", kPrefix, valueString, kPostfix];
     NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] initWithString:basicString];
     

@@ -26,6 +26,13 @@
 //  
 
 #import <DJIUXSDKWidgets/DUXBetaBaseWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaCompassWidget.h>
+#import "DUXBetaHomeDistanceWidget.h"
+#import "DUXBetaAltitudeWidget.h"
+#import "DUXBetaHorizontalVelocityWidget.h"
+#import "DUXBetaVerticalVelocityWidget.h"
+#import "DUXBetaVPSWidget.h"
+#import "DUXBetaRCDistanceWidget.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,6 +52,20 @@ NS_ASSUME_NONNULL_BEGIN
  *  more physically precise the location is. A negative accuracy value indicates an invalid location.
  */
 @property (assign, nonatomic) CLLocationAccuracy locationManagerAccuracy;
+
+@property (nonatomic, strong) UIView *topStackBackgroundView;
+@property (nonatomic, strong) UIView *bottomStackBackgroundView;
+@property (nonatomic, strong) DUXBetaCompassWidget *compassWidget;
+
+
+@property (nonatomic, strong) DUXBetaHomeDistanceWidget *homeDistanceWidget;
+@property (nonatomic, strong) DUXBetaAltitudeWidget *altitudeWidget;
+@property (nonatomic, strong) DUXBetaRCDistanceWidget *rcDistanceWidget;
+@property (nonatomic, strong) DUXBetaHorizontalVelocityWidget *horizontalVelocityWidget;
+@property (nonatomic, strong) DUXBetaVerticalVelocityWidget *verticalVelocityWidget;
+@property (nonatomic, strong) DUXBetaVPSWidget *vpsWidget;
+
+- (void)updateUI;
 
 @end
 

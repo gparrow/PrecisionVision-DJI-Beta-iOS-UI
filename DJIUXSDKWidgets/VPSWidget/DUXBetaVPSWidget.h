@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *disabledFontColor;
 @property (nonatomic, strong) UIColor *dangerFontColor;
 @property (nonatomic, strong) UIColor *normalFontColor;
+- (void)updateUI;
 
 @end
 

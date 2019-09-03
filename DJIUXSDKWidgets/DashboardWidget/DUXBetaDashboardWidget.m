@@ -39,13 +39,7 @@
 
 static CGSize const kDesignSize = {255.0, 50.0};
 
-@interface DUXBetaDashboardWidget ()
 
-@property (nonatomic, strong) UIView *topStackBackgroundView;
-@property (nonatomic, strong) UIView *bottomStackBackgroundView;
-@property (nonatomic, strong) DUXBetaCompassWidget *compassWidget;
-
-@end
 
 @implementation DUXBetaDashboardWidget
 
@@ -71,37 +65,37 @@ static CGSize const kDesignSize = {255.0, 50.0};
 
     // Setting up widgets
     self.compassWidget = [[DUXBetaCompassWidget alloc] init];
-    DUXBetaHomeDistanceWidget *homeDistanceWidget = [[DUXBetaHomeDistanceWidget alloc] init];
-    DUXBetaAltitudeWidget *altitudeWidget = [[DUXBetaAltitudeWidget alloc] init];
-    DUXBetaRCDistanceWidget *rcDistanceWidget = [[DUXBetaRCDistanceWidget alloc] init];
-    DUXBetaHorizontalVelocityWidget *horizontalVelocityWidget = [[DUXBetaHorizontalVelocityWidget alloc] init];
-    DUXBetaVerticalVelocityWidget *verticalVelocityWidget = [[DUXBetaVerticalVelocityWidget alloc] init];
-    DUXBetaVPSWidget *vpsWidget = [[DUXBetaVPSWidget alloc] init];
+    self.homeDistanceWidget = [[DUXBetaHomeDistanceWidget alloc] init];
+    self.altitudeWidget = [[DUXBetaAltitudeWidget alloc] init];
+    self.rcDistanceWidget = [[DUXBetaRCDistanceWidget alloc] init];
+    self.horizontalVelocityWidget = [[DUXBetaHorizontalVelocityWidget alloc] init];
+    self.verticalVelocityWidget = [[DUXBetaVerticalVelocityWidget alloc] init];
+    self.vpsWidget = [[DUXBetaVPSWidget alloc] init];
     
     // Preparing for autolayout
     self.topStackBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
     self.bottomStackBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
     self.compassWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
-    homeDistanceWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
-    altitudeWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
-    rcDistanceWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
-    horizontalVelocityWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
-    verticalVelocityWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
-    vpsWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.homeDistanceWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.altitudeWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.rcDistanceWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.horizontalVelocityWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.verticalVelocityWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.vpsWidget.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.compassWidget installInViewController:self];
 
-    [homeDistanceWidget installInViewController:self
+    [self.homeDistanceWidget installInViewController:self
                     insideSubview:self.topStackBackgroundView];
-    [altitudeWidget installInViewController:self
+    [self.altitudeWidget installInViewController:self
                     insideSubview:self.topStackBackgroundView];
-    [rcDistanceWidget installInViewController:self
+    [self.rcDistanceWidget installInViewController:self
                                 insideSubview:self.topStackBackgroundView];
-    [horizontalVelocityWidget installInViewController:self
+    [self.horizontalVelocityWidget installInViewController:self
                     insideSubview:self.bottomStackBackgroundView];
-    [verticalVelocityWidget installInViewController:self
+    [self.verticalVelocityWidget installInViewController:self
                     insideSubview:self.bottomStackBackgroundView];
-    [vpsWidget installInViewController:self
+    [self.vpsWidget installInViewController:self
                     insideSubview:self.bottomStackBackgroundView];
     
     [self.view addSubview: self.topStackBackgroundView];
@@ -131,12 +125,12 @@ static CGSize const kDesignSize = {255.0, 50.0};
     
     // Aspect ratios
     double compassWidgetAspectRatio = [self.compassWidget widgetSizeHint].preferredAspectRatio;
-    double homeDistanceWidgetAspectRatio = [homeDistanceWidget widgetSizeHint].preferredAspectRatio;
-    double altitudeWidgetAspectRatio = [altitudeWidget widgetSizeHint].preferredAspectRatio;
-    double rcDistanceWidgetAspectRatio = [rcDistanceWidget widgetSizeHint].preferredAspectRatio;
-    double horizontalVelocityWidgetAspectRatio = [horizontalVelocityWidget widgetSizeHint].preferredAspectRatio;
-    double verticalVelocityWidgetAspectRatio = [verticalVelocityWidget widgetSizeHint].preferredAspectRatio;
-    double vpsWidgetAspectRatio = [vpsWidget widgetSizeHint].preferredAspectRatio;
+    double homeDistanceWidgetAspectRatio = [self.homeDistanceWidget widgetSizeHint].preferredAspectRatio;
+    double altitudeWidgetAspectRatio = [self.altitudeWidget widgetSizeHint].preferredAspectRatio;
+    double rcDistanceWidgetAspectRatio = [self.rcDistanceWidget widgetSizeHint].preferredAspectRatio;
+    double horizontalVelocityWidgetAspectRatio = [self.horizontalVelocityWidget widgetSizeHint].preferredAspectRatio;
+    double verticalVelocityWidgetAspectRatio = [self.verticalVelocityWidget widgetSizeHint].preferredAspectRatio;
+    double vpsWidgetAspectRatio = [self.vpsWidget widgetSizeHint].preferredAspectRatio;
     
     // Autolayout
     [self.compassWidget.view.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
@@ -159,77 +153,77 @@ static CGSize const kDesignSize = {255.0, 50.0};
     
     
     [topStackPaddingGuide1.leftAnchor constraintEqualToAnchor:self.topStackBackgroundView.leftAnchor].active = YES;
-    [topStackPaddingGuide1.rightAnchor constraintEqualToAnchor:homeDistanceWidget.view.leftAnchor].active = YES;
+    [topStackPaddingGuide1.rightAnchor constraintEqualToAnchor:self.homeDistanceWidget.view.leftAnchor].active = YES;
     [topStackPaddingGuide1.topAnchor constraintEqualToAnchor:self.topStackBackgroundView.topAnchor].active = YES;
     [topStackPaddingGuide1.bottomAnchor constraintEqualToAnchor:self.topStackBackgroundView.bottomAnchor].active = YES;
     [topStackPaddingGuide1.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.01].active = YES;
     
-    [topStackPaddingGuide2.leftAnchor constraintEqualToAnchor:homeDistanceWidget.view.rightAnchor].active = YES;
-    [topStackPaddingGuide2.rightAnchor constraintEqualToAnchor:altitudeWidget.view.leftAnchor].active = YES;
+    [topStackPaddingGuide2.leftAnchor constraintEqualToAnchor:self.homeDistanceWidget.view.rightAnchor].active = YES;
+    [topStackPaddingGuide2.rightAnchor constraintEqualToAnchor:self.altitudeWidget.view.leftAnchor].active = YES;
     [topStackPaddingGuide2.topAnchor constraintEqualToAnchor:self.topStackBackgroundView.topAnchor].active = YES;
     [topStackPaddingGuide2.bottomAnchor constraintEqualToAnchor:self.topStackBackgroundView.bottomAnchor].active = YES;
     [topStackPaddingGuide2.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.01].active = YES;
     
-    [topStackPaddingGuide3.leftAnchor constraintEqualToAnchor:altitudeWidget.view.rightAnchor].active = YES;
-    [topStackPaddingGuide3.rightAnchor constraintEqualToAnchor:rcDistanceWidget.view.leftAnchor].active = YES;
+    [topStackPaddingGuide3.leftAnchor constraintEqualToAnchor:self.altitudeWidget.view.rightAnchor].active = YES;
+    [topStackPaddingGuide3.rightAnchor constraintEqualToAnchor:self.rcDistanceWidget.view.leftAnchor].active = YES;
     [topStackPaddingGuide3.topAnchor constraintEqualToAnchor:self.topStackBackgroundView.topAnchor].active = YES;
     [topStackPaddingGuide3.bottomAnchor constraintEqualToAnchor:self.topStackBackgroundView.bottomAnchor].active = YES;
     [topStackPaddingGuide3.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.01].active = YES;
     
-    [topStackPaddingGuide4.leftAnchor constraintEqualToAnchor:rcDistanceWidget.view.rightAnchor].active = YES;
+    [topStackPaddingGuide4.leftAnchor constraintEqualToAnchor:self.rcDistanceWidget.view.rightAnchor].active = YES;
     [topStackPaddingGuide4.rightAnchor constraintEqualToAnchor:self.topStackBackgroundView.rightAnchor].active = YES;
     [topStackPaddingGuide4.topAnchor constraintEqualToAnchor:self.topStackBackgroundView.topAnchor].active = YES;
     [topStackPaddingGuide4.bottomAnchor constraintEqualToAnchor:self.topStackBackgroundView.bottomAnchor].active = YES;
     [topStackPaddingGuide4.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.01].active = YES;
     
     
-    [rcDistanceWidget.view.widthAnchor constraintEqualToAnchor:rcDistanceWidget.view.heightAnchor multiplier:rcDistanceWidgetAspectRatio].active = YES;
-    [rcDistanceWidget.view.heightAnchor constraintEqualToAnchor:self.topStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
-    [rcDistanceWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.topStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
+    [self.rcDistanceWidget.view.widthAnchor constraintEqualToAnchor:self.rcDistanceWidget.view.heightAnchor multiplier:rcDistanceWidgetAspectRatio].active = YES;
+    [self.rcDistanceWidget.view.heightAnchor constraintEqualToAnchor:self.topStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
+    [self.rcDistanceWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.topStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
 
-    [homeDistanceWidget.view.widthAnchor constraintEqualToAnchor:homeDistanceWidget.view.heightAnchor multiplier:homeDistanceWidgetAspectRatio].active = YES;
-    [homeDistanceWidget.view.heightAnchor constraintEqualToAnchor:self.topStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
-    [homeDistanceWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.topStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
+    [self.homeDistanceWidget.view.widthAnchor constraintEqualToAnchor:self.homeDistanceWidget.view.heightAnchor multiplier:homeDistanceWidgetAspectRatio].active = YES;
+    [self.homeDistanceWidget.view.heightAnchor constraintEqualToAnchor:self.topStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
+    [self.homeDistanceWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.topStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
 
-    [altitudeWidget.view.widthAnchor constraintEqualToAnchor:altitudeWidget.view.heightAnchor multiplier:altitudeWidgetAspectRatio].active = YES;
-    [altitudeWidget.view.heightAnchor constraintEqualToAnchor:self.topStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
-    [altitudeWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.topStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
+    [self.altitudeWidget.view.widthAnchor constraintEqualToAnchor:self.altitudeWidget.view.heightAnchor multiplier:altitudeWidgetAspectRatio].active = YES;
+    [self.altitudeWidget.view.heightAnchor constraintEqualToAnchor:self.topStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
+    [self.altitudeWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.topStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
     
     [bottomStackPaddingGuide1.leftAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.leftAnchor].active = YES;
-    [bottomStackPaddingGuide1.rightAnchor constraintEqualToAnchor:horizontalVelocityWidget.view.leftAnchor].active = YES;
+    [bottomStackPaddingGuide1.rightAnchor constraintEqualToAnchor:self.horizontalVelocityWidget.view.leftAnchor].active = YES;
     [bottomStackPaddingGuide1.topAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.topAnchor].active = YES;
     [bottomStackPaddingGuide1.bottomAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.bottomAnchor].active = YES;
     [bottomStackPaddingGuide1.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.02].active = YES;
     
-    [bottomStackPaddingGuide2.leftAnchor constraintEqualToAnchor:horizontalVelocityWidget.view.rightAnchor].active = YES;
-    [bottomStackPaddingGuide2.rightAnchor constraintEqualToAnchor:verticalVelocityWidget.view.leftAnchor].active = YES;
+    [bottomStackPaddingGuide2.leftAnchor constraintEqualToAnchor:self.horizontalVelocityWidget.view.rightAnchor].active = YES;
+    [bottomStackPaddingGuide2.rightAnchor constraintEqualToAnchor:self.verticalVelocityWidget.view.leftAnchor].active = YES;
     [bottomStackPaddingGuide2.topAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.topAnchor].active = YES;
     [bottomStackPaddingGuide2.bottomAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.bottomAnchor].active = YES;
     [bottomStackPaddingGuide2.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.02].active = YES;
     
-    [bottomStackPaddingGuide3.leftAnchor constraintEqualToAnchor:verticalVelocityWidget.view.rightAnchor].active = YES;
-    [bottomStackPaddingGuide3.rightAnchor constraintEqualToAnchor:vpsWidget.view.leftAnchor].active = YES;
+    [bottomStackPaddingGuide3.leftAnchor constraintEqualToAnchor:self.verticalVelocityWidget.view.rightAnchor].active = YES;
+    [bottomStackPaddingGuide3.rightAnchor constraintEqualToAnchor:self.vpsWidget.view.leftAnchor].active = YES;
     [bottomStackPaddingGuide3.topAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.topAnchor].active = YES;
     [bottomStackPaddingGuide3.bottomAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.bottomAnchor].active = YES;
     [bottomStackPaddingGuide3.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.02].active = YES;
     
-    [bottomStackPaddingGuide4.leftAnchor constraintEqualToAnchor:vpsWidget.view.rightAnchor].active = YES;
+    [bottomStackPaddingGuide4.leftAnchor constraintEqualToAnchor:self.vpsWidget.view.rightAnchor].active = YES;
     [bottomStackPaddingGuide4.rightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.rightAnchor].active = YES;
     [bottomStackPaddingGuide4.topAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.topAnchor].active = YES;
     [bottomStackPaddingGuide4.bottomAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.bottomAnchor].active = YES;
     [bottomStackPaddingGuide4.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.02].active = YES;
     
-    [verticalVelocityWidget.view.widthAnchor constraintEqualToAnchor:verticalVelocityWidget.view.heightAnchor multiplier:verticalVelocityWidgetAspectRatio].active = YES;
-    [verticalVelocityWidget.view.heightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
-    [verticalVelocityWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.bottomStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
+    [self.verticalVelocityWidget.view.widthAnchor constraintEqualToAnchor:self.verticalVelocityWidget.view.heightAnchor multiplier:verticalVelocityWidgetAspectRatio].active = YES;
+    [self.verticalVelocityWidget.view.heightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
+    [self.verticalVelocityWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.bottomStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
     
-    [horizontalVelocityWidget.view.widthAnchor constraintEqualToAnchor:horizontalVelocityWidget.view.heightAnchor multiplier:horizontalVelocityWidgetAspectRatio].active = YES;
-    [horizontalVelocityWidget.view.heightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
-    [horizontalVelocityWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.bottomStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
+    [self.horizontalVelocityWidget.view.widthAnchor constraintEqualToAnchor:self.horizontalVelocityWidget.view.heightAnchor multiplier:horizontalVelocityWidgetAspectRatio].active = YES;
+    [self.horizontalVelocityWidget.view.heightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
+    [self.horizontalVelocityWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.bottomStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
     
-    [vpsWidget.view.widthAnchor constraintEqualToAnchor:vpsWidget.view.heightAnchor multiplier:vpsWidgetAspectRatio].active = YES;
-    [vpsWidget.view.heightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
-    [vpsWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.bottomStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
+    [self.vpsWidget.view.widthAnchor constraintEqualToAnchor:self.vpsWidget.view.heightAnchor multiplier:vpsWidgetAspectRatio].active = YES;
+    [self.vpsWidget.view.heightAnchor constraintEqualToAnchor:self.bottomStackBackgroundView.heightAnchor multiplier:0.65].active = YES;
+    [self.vpsWidget.view.centerYAnchor constraintEqualToSystemSpacingBelowAnchor:self.bottomStackBackgroundView.centerYAnchor multiplier:0.9].active = YES;
 }
 
 - (void)updateUI {
@@ -244,6 +238,18 @@ static CGSize const kDesignSize = {255.0, 50.0};
     CAShapeLayer *bottomShapeLayer = [[CAShapeLayer alloc] init];
     [bottomShapeLayer setPath:bottomRoundedPath.CGPath];
     self.bottomStackBackgroundView.layer.mask = bottomShapeLayer;
+    
+
+    //added to update text fields
+    [self.altitudeWidget updateUI];
+    [self.vpsWidget updateUI];
+    [self.verticalVelocityWidget updateUI];
+    [self.horizontalVelocityWidget updateUI];
+    [self.rcDistanceWidget updateUI];
+    [self.homeDistanceWidget updateUI];
+
+    
+    
 }
 
 -(void)setLocationManagerAccuracy:(CLLocationAccuracy)locationManagerAccuracy {
