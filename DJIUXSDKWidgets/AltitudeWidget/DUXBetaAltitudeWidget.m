@@ -1,4 +1,4 @@
-//
+// 
 //  DUXBetaAltitudeWidget.m
 //  DJIUXSDK
 //
