@@ -15,7 +15,4 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.7.1'
   s.source_files = 'DJIUXSDKWidgets/**/*.{h,m}'
   s.resource_bundle = { 'DUXBetaAssets' => 'DJIUXSDKWidgets/**/*.xcassets' }
-  s.dependency 'DJI-SDK-iOS', '~>4.10'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Core', '0.1.0'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.1.0'
 end
