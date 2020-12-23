@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.source_files = 'DJIUXSDKCore/**/*.{h,m}'
   s.public_header_files = 'DJIUXSDKCore/**/*.h'
   s.dependency 'DJI-SDK-iOS', '~>4.10'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.1.0'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '~>0.1.0'
 end
